@@ -15,7 +15,11 @@ https://www.tunnelsup.com/hash-analyzer/
 kali@kali:~$ ssh2john id_rsa > hash
 
 # Crack with john
-kali@kali:~$ john hash --wordlist=/usr/share/wordlists/rockyou.txt 
+kali@kali:~$ john hash --wordlist=/usr/share/wordlists/rockyou.txt
+
+# cat rule to john conf
+sudo sh -c 'cat /home/kali/passwordattacks/ssh.rule >> /etc/john/john.conf'
+- Create ssh.passwords, ssh.rule file 
 
 # Create rule file and run
 kali@kali:~$ john --wordlist=ssh.passwords --rules=sshRules ssh.hash
