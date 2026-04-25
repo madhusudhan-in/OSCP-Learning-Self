@@ -25,7 +25,7 @@ sudo sh -c 'cat /home/kali/passwordattacks/ssh.rule >> /etc/john/john.conf'
 kali@kali:~$ john --wordlist=ssh.passwords --rules=sshRules ssh.hash
 
 # Example: ssh.rule
-[List.Rules::sshRules]
+[List.Rules:sshRules]
 c $1 $3 $7 $!
 c $1 $3 $7 $@
 c $1 $3 $7 $#
