@@ -39,7 +39,7 @@ c $1 $3 $7 $#
 kali@kali:~$ hashcat --help | grep -i "ntlm"
 
 # Cracking hash with hashcat
-kali@kali:~$ sudo hashcat -m <mode> hash /usr/share/wordlists/rockyou.txt -r <.rule file> --force
+kali@kali:~$ sudo hashcat -m <mode> hash /usr/share/wordlists/rockyou.txt -r /usr/share/hashcat/rules/<.rule file> --force
 
 ### Common hash modes:
 # MD5 = 0
