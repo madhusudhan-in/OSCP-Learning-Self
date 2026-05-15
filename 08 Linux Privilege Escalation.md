@@ -54,6 +54,8 @@ kali@kali:~$ sudo -l
 kali@kali:~$ aa-status
 ```
 
+##https://gtfobins.org/#/^privilege%20escalation$/
+
 ## Exploiting Kernel Vulnerabilities
 ```shell
 # System info cmds (covered in Inital Entry Point)
