@@ -1,4 +1,16 @@
-Here’s a **one‑page OSCP Active Directory Quick Reference Sheet** — compact, exam‑style, with the most useful commands mapped to each stage of the kill chain. This is the kind of thing you’d keep beside you while practicing or during the exam.
+Active Directory Quick Reference Sheet
+
+Enumeration → nmap, rpcclient, enum4linux-ng
+
+User Discovery → kerbrute, GetNPUsers.py, crackmapexec
+
+Service Exploitation → smbclient, evil-winrm, xfreerdp
+
+Privilege Escalation → GetUserSPNs.py, psexec.py, winPEAS
+
+Lateral Movement → bloodhound-python, wmiexec.py
+
+Domain Dominance → secretsdump.py, mimikatz, net group
 
 ---
 
