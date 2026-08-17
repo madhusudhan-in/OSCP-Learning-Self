@@ -1,0 +1,56 @@
+**Proxychains** (specifically `proxychains4`), 
+---
+
+## 🔧 Step 1: Locate the Config File
+- System‑wide config: `/etc/proxychains.conf`
+- User‑specific config: `~/.proxychains/proxychains.conf`
+
+---
+
+## ✍️ Step 2: Edit the Config
+Open the file with a text editor:
+```bash
+sudo nano /etc/proxychains.conf
+```
+
+---
+
+## ⚙️ Step 3: Configure Proxy List
+Scroll to the bottom and add your proxies. Format is:
+```
+<type> <IP> <port>
+```
+
+Examples:
+```
+socks5 127.0.0.1 9050
+socks4 192.168.1.10 1080
+http   203.0.113.5 8080
+```
+
+---
+
+## 🔄 Step 4: Choose Chain Type
+At the top of the config, you’ll see options:
+- **dynamic_chain** → Skips dead proxies, uses working ones.
+- **strict_chain** → Uses proxies in the exact order listed.
+- **random_chain** → Randomizes proxy order.
+
+For scanning, **dynamic_chain** is usually best.
+
+---
+
+## 🚀 Step 5: Run Commands Through Proxychains
+Prepend `proxychains4` to your command:
+```bash
+proxychains4 nmap -sT -Pn -p 445,3389,5985 INTERNAL_IP
+proxychains4 curl http://example.com
+proxychains4 ssh user@target
+```
+
+---
+
+## ⚠️ Notes
+- Only **TCP connect scans (-sT)** work with Nmap through Proxychains.  
+- UDP, SYN, and ICMP scans won’t work because they require raw sockets.  
+- Expect slower performance depending on proxy latency.  
